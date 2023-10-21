@@ -1,9 +1,24 @@
-import React from 'react'
+import { useState } from "react";
+import storeItems from "../data/items.json";
+import { Col, Row } from "react-bootstrap";
+import StoreItem from "./StoreItem";
 
 const Store = () => {
-  return (
-    <h1>Store</h1>
-  )
-}
+  //   const [first, setfirst] = useState(second);
 
-export default Store
+  return (
+    <>
+      <h1>Store</h1>
+      <Row md={2} xs={1} lg={3} className="g-3">
+        {storeItems.map((item) => (
+          <Col key={item.id}>{<StoreItem {...item} />}</Col>
+          //   <Col>{<StoreItem {item.id, item.imgUrl, item.name, item.price}/>}</Col>
+
+          //   <Col>{JSON.stringify(item)}</Col>
+        ))}
+      </Row>
+    </>
+  );
+};
+
+export default Store;
